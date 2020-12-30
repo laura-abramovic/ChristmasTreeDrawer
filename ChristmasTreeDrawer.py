@@ -8,6 +8,7 @@ SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
 ORNAMENT_RADIUS = 10
 
+#theorem about similar triangles
 def getWidthLength(height, smallHeight, width):
 	return int((smallHeight / height) * width)
 
@@ -40,13 +41,21 @@ def randomPointOnTree(triangles):
 
 	return width, height
 
+def getRandomColor():
+	color = ()
+	for i in range(3):
+		shade = randint(0, 255)
+		color += (shade,)
+
+	return color
+
 def drawOneOrnament(screen, center):
 	#get random color ovdje 
-	red = (175, 50, 50)
-	pygame.draw.circle(screen, red, center, ORNAMENT_RADIUS, 0)
+	color = getRandomColor()
+	pygame.draw.circle(screen, color, center, ORNAMENT_RADIUS, 0)
 
 def drawOrnaments(screen, triangles):
-	for i in range(10):
+	for i in range(50):
 		point = randomPointOnTree(triangles)
 		drawOneOrnament(screen, point)
 	pygame.display.flip()
